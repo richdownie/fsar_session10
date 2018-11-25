@@ -9,10 +9,10 @@ require_relative '../page_objects/widget_new_page'
 caps = Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions: { args: [ "--headless" ]})
 
 Before do
-  if ENV["HEADLESS"]
-    @browser = Selenium::WebDriver.for :chrome, desired_capabilities: caps
-  else
+  if ENV["CHROME"]
     @browser = Selenium::WebDriver.for :chrome
+  else
+    @browser = Selenium::WebDriver.for :chrome, desired_capabilities: caps
   end
   @domain = 'https://fullstackautomationwithruby.com'
   @widgets_index = WidgetsIndex.new(@browser, @domain)
